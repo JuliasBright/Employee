@@ -1,17 +1,36 @@
-<h2>Edit Employee</h2>
-<form (submit)="onSubmit()">
-  <div class="form-group">
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" [(ngModel)]="employee.firstName" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" [(ngModel)]="employee.lastName" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" [(ngModel)]="employee.email" class="form-control" required>
-  </div>
-  <!-- Add more form fields for other employee properties -->
-  <button type="submit" class="btn btn-primary">Update</button>
-</form>
+<div class="container">
+  <mat-card class="form-container">
+    <mat-card-header>
+      <mat-card-title>Edit Employee</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (submit)="onSubmit()">
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>First Name:</mat-label>
+            <input matInput type="text" id="firstName" name="firstName" [(ngModel)]="employee.firstName" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Last Name:</mat-label>
+            <input matInput type="text" id="lastName" name="lastName" [(ngModel)]="employee.lastName" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Email:</mat-label>
+            <input matInput type="email" id="email" name="email" [(ngModel)]="employee.email" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Skills:</mat-label>
+            <input matInput type="text" id="Skills" name="Skills" [(ngModel)]="employee.skills" required>
+          </mat-form-field>
+        </div>
+        <button type="submit" mat-raised-button color="primary">Update</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

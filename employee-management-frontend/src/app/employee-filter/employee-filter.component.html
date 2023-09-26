@@ -1,12 +1,24 @@
-<h2>Filter Employees</h2>
-<form (submit)="onFilter()">
-  <div class="form-group">
-    <label for="birthYear">Birth Year:</label>
-    <input type="number" id="birthYear" name="birthYear" [(ngModel)]="filter.birthYear" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="skills">Skills (comma-separated):</label>
-    <input type="text" id="skills" name="skills" [(ngModel)]="filter.skills" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-primary">Apply Filters</button>
-</form>
+<div class="container">
+  <mat-card class="form-container">
+    <mat-card-header>
+      <mat-card-title>Filter Employees</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (submit)="filterEmployees()">
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Birth Year:</mat-label>
+            <input matInput type="number" id="birthYear" name="birthYear" [(ngModel)]="filter.birthYear">
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Skills (comma-separated):</mat-label>
+            <input matInput type="text" id="skills" name="skills" [(ngModel)]="filter.skills">
+          </mat-form-field>
+        </div>
+        <button type="submit" mat-raised-button color="primary">Apply Filters</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'employee-management-frontend';
+  title = 'Employee-Management-Frontend';
+
+  showEmployeeCreate: boolean = true;
+
+  showEmployeeEdit: boolean = true;
+
+  showEmployeeFilter: boolean = true;
+
+  showEmployeeList: boolean = true;
+
+  
 }

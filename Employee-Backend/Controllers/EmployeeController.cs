@@ -14,7 +14,8 @@ namespace EmployeeManagement.Controllers
         {
             new Employee { Id = 1, FirstName = "John", LastName = "Doe", Email = "john@example.com", DateOfBirth = new DateTime(1990, 1, 15), Skills = new List<string> { "C#", "ASP.NET Core" } },
             new Employee { Id = 2, FirstName = "Jane", LastName = "Smith", Email = "jane@example.com", DateOfBirth = new DateTime(1985, 5, 8), Skills = new List<string> { "JavaScript", "React" } },
-            // Add more employees here
+            new Employee { Id = 3, FirstName = "Jack", LastName = "Jones", Email = "jack@example.com", DateOfBirth = new DateTime(1995, 4, 12), Skills = new List<string> { "Typescript", "Vue" } },
+            new Employee { Id = 4, FirstName = "Jill", LastName = "Walsh", Email = "walsh@example.com", DateOfBirth = new DateTime(1940, 6, 18), Skills = new List<string> { "Java", "Angular" } },
         };
 
         [HttpGet]
