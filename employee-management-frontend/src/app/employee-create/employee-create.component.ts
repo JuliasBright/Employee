@@ -5,29 +5,28 @@ import { Employee } from '../models/employee.model';
 @Component({
   selector: 'app-employee-create',
   templateUrl: './employee-create.component.html',
-  styleUrls: ['./employee-create.component.css']
+  styleUrls: ['./employee-create.component.scss']
 })
 export class EmployeeCreateComponent {
   employee: Employee = {
     id: 0,
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    skills: ''
    
   };
 
   constructor(private employeeService: EmployeeService) {}
 
   onSubmit(): void {
-    // Call the service to create the employee
     this.employeeService.createEmployee(this.employee).subscribe(() => {
-      // Clear the form or perform other actions
       this.employee = {
         id: 0,
         firstName: '',
         lastName: '',
-        email: ''
-        // Reset other properties as needed
+        email: '',
+        skills: ''
       };
     });
   }

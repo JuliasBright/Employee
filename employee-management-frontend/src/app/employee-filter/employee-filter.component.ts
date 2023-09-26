@@ -17,7 +17,6 @@ export class EmployeeFilterComponent {
 
   constructor(private employeeService: EmployeeService) {}
 
-  //TODO:
   filterEmployees() {
     this.employeeService.getEmployees(this.filter).subscribe((data: Employee[]) => {
       this.employees = data;

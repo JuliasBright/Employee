@@ -1,11 +1,12 @@
 <h2>Employee List</h2>
-<table class="table">
+<table class="table" [@listAnimation]="employees.length">
   <thead>
     <tr>
       <th>ID</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
+      <th>Skills</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
       <td>{{ employee.firstName }}</td>
       <td>{{ employee.lastName }}</td>
       <td>{{ employee.email }}</td>
+      <td>{{ employee.skills }}</td>
     </tr>
   </tbody>
 </table>

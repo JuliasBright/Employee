@@ -6,15 +6,15 @@ import { Employee } from '../models/employee.model';
 @Component({
   selector: 'app-employee-edit',
   templateUrl: './employee-edit.component.html',
-  styleUrls: ['./employee-edit.component.css']
+  styleUrls: ['./employee-edit.component.scss']
 })
 export class EmployeeEditComponent implements OnInit {
   employee: Employee = {
     id: 0,
     firstName: '',
     lastName: '',
-    email: ''
-    // Initialize other properties as needed
+    email: '',
+    skills: ''
   };
 
   constructor(
@@ -24,10 +24,10 @@ export class EmployeeEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Get the employee ID from the route parameter
-    const id = +this.route.snapshot.paramMap.get('id');
+    const idParam = this.route.snapshot.paramMap.get('id');
+    const id = idParam ? +idParam : 0;
+  
     if (id) {
-      // Fetch the employee details from the service based on the ID
       this.employeeService.getEmployeeById(id).subscribe((data: Employee) => {
         this.employee = data;
       });
@@ -35,9 +35,7 @@ export class EmployeeEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // Call the service to update the employee
     this.employeeService.updateEmployee(this.employee).subscribe(() => {
-      // Navigate back to the employee list or perform other actions
       this.router.navigate(['/employees']);
     });
   }
