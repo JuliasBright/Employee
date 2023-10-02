@@ -10,7 +10,7 @@ namespace EmployeeManagement.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly List<Employee> _employees = new List<Employee>
+                 private readonly List<Employee> _employees = new List<Employee>
         {
             new Employee { Id = 1, FirstName = "John", LastName = "Doe", Email = "john@example.com", DateOfBirth = new DateTime(1990, 1, 15), Skills = new List<string> { "C#", "ASP.NET Core" } },
             new Employee { Id = 2, FirstName = "Jane", LastName = "Smith", Email = "jane@example.com", DateOfBirth = new DateTime(1985, 5, 8), Skills = new List<string> { "JavaScript", "React" } },
@@ -18,34 +18,34 @@ namespace EmployeeManagement.Controllers
             new Employee { Id = 4, FirstName = "Jill", LastName = "Walsh", Email = "walsh@example.com", DateOfBirth = new DateTime(1940, 6, 18), Skills = new List<string> { "Java", "Angular" } },
         };
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Employee>> Get()
-        {
-            return Ok(_employees);
-        }
+[HttpGet]
+public ActionResult<IEnumerable<Employee>> Get()
+{
+    return Ok(_employees);
+}
 
-        [HttpGet("{id}")]
-        public ActionResult<Employee> Get(int id)
-        {
-            var employee = _employees.FirstOrDefault(e => e.Id == id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-            return Ok(employee);
-        }
+[HttpGet("{id}")]
+public ActionResult<Employee> Get(int id)
+{
+    var employee = _employees.FirstOrDefault(e => e.Id == id);
+    if (employee == null)
+    {
+        return NotFound();
+    }
+    return Ok(employee);
+}
 
-        [HttpPost]
-        public ActionResult<Employee> Post([FromBody] Employee employee)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            employee.Id = _employees.Max(e => e.Id) + 1;
+[HttpPost]
+public ActionResult<Employee> Post([FromBody] Employee employee)
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+    employee.Id = _employees.Max(e => e.Id) + 1;
             _employees.Add(employee);
-            return CreatedAtAction(nameof(Get), new { id = employee.Id }, employee);
-        }
+        return CreatedAtAction(nameof(Get), new { id = employee.Id }, employee);
+}
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Employee updatedEmployee)
@@ -53,6 +53,12 @@ namespace EmployeeManagement.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            var existingEmployee = _employees.FirstOrDefault(e => e.Id == id);
+            if (existingEmployee != null)
+            {
+                return BadRequest(new { Message = "Employee with the specified ID already exists." });
             }
             var employee = _employees.FirstOrDefault(e => e.Id == id);
             if (employee == null)
@@ -70,17 +76,19 @@ namespace EmployeeManagement.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var employee = _employees.FirstOrDefault(e => e.Id == id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
+public IActionResult Delete(int id)
+{
+    var employee = _employees.FirstOrDefault(e => e.Id == id);
+    if (employee == null)
+    {
+        return NotFound(new { Message = "Employee not found", StatusCode = 404 });
+    }
 
-            _employees.Remove(employee);
-            return NoContent();
-        }
+    _employees.Remove(employee);
+
+    return Ok(new { Message = "Employee deleted successfully", StatusCode = 200 });
+}
+
 
         [HttpGet("search")]
         public ActionResult<IEnumerable<Employee>> SearchEmployees([FromQuery] string firstName, [FromQuery] string lastName, [FromQuery] string email)

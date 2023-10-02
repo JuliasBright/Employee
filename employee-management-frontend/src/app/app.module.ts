@@ -14,8 +14,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { Routes } from '@angular/router';
 
-
+const routes: Routes = [
+  { path: 'employees', component: EmployeeListComponent },
+  { path: 'create', component: EmployeeCreateComponent },
+  { path: 'edit', component: EmployeeEditComponent },
+  { path: 'filter', component: EmployeeFilterComponent },
+  { path: '', redirectTo: '/employees', pathMatch: 'full' },
+];
 @NgModule({
   declarations: [
     AppComponent,

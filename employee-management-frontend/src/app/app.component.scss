@@ -1,0 +1,22 @@
+.hidden {
+    display: none;
+  }
+
+/* Your existing styles here */
+
+/* Content styles */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust as needed */
+  }
+  
+  /* Employee List Component styles */
+  app-employee-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  

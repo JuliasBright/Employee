@@ -1,47 +1,27 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-
-<style>
-  /* Your existing styles here */
-</style>
-
-<!-- Toolbar -->
 <div class="toolbar" role="banner">
   <!-- Your toolbar content here -->
+
+  <section>
+    <div class="toolbar__left">
+      <a routerLink="/home" class="toolbar__logo">
+        <img preload src="https://angular.io/assets/images/logos/angular/logo-nav@2x.png" alt="Logo" />
+      </a>
+    </div>
+    <div class="toolbar__right">
+      <a routerLink="/home" class="toolbar__link">Home</a>
+      <a routerLink="/create" class="toolbar__link">Create</a>
+      <a routerLink="/edit" class="toolbar__link">Edit</a>
+      <a routerLink="/filter" class="toolbar__link">Filter</a>
+    </div>
+  </section>
 </div>
 
+<!-- Rest of your HTML -->
+
 <div class="content" role="main">
-
-  <!-- Employee List Component -->
-  <app-employee-list></app-employee-list>
-
-  <!-- Buttons to Show Other Components -->
-  <div class="card-container">
-    <button class="card card-small" (click)="showEmployeeCreate = !showEmployeeCreate" tabindex="0">
-      <span>Show Employee Create</span>
-    </button>
-
-    <button class="card card-small" (click)="showEmployeeEdit = !showEmployeeEdit" tabindex="0">
-      <span>Show Employee Edit</span>
-    </button>
-
-    <button class="card card-small" (click)="showEmployeeFilter = !showEmployeeFilter" tabindex="0">
-      <span>Show Employee Filter</span>
-    </button>
-  </div>
-
-  <!-- Employee Create Component (Initially Hidden) -->
-  <app-employee-create *ngIf="showEmployeeCreate"></app-employee-create>
-
-  <!-- Employee Edit Component (Initially Hidden) -->
-  <app-employee-edit *ngIf="showEmployeeEdit"></app-employee-edit>
-
-  <!-- Employee Filter Component (Initially Hidden) -->
-  <app-employee-filter *ngIf="showEmployeeFilter"></app-employee-filter>
-
+  <section>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </section>
 </div>
